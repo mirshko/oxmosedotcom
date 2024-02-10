@@ -23,6 +23,9 @@ dependencies:
   '@sanity/client':
     specifier: ^6.12.4
     version: 6.12.4
+  '@sanity/image-url':
+    specifier: ^1.0.2
+    version: 1.0.2
   '@types/react':
     specifier: ^18.2.55
     version: 18.2.55
@@ -2487,6 +2490,7 @@ packages:
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+    requiresBuild: true
     dev: false
 
   /color-string@1.9.1:
