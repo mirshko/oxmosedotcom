@@ -1,7 +1,9 @@
 import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
 
 import { sanityIntegration as sanity } from "@sanity/astro";
-import react from "@astrojs/react";
+
 import { SANITY_DATASET_NAME, SANITY_PROJECT_ID } from "./env.mjs";
 
 // https://astro.build/config
@@ -17,5 +19,8 @@ export default defineConfig({
       studioBasePath: "/admin",
     }),
     react(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
   ],
 });
