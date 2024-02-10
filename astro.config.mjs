@@ -1,13 +1,14 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-
 import { sanityIntegration as sanity } from "@sanity/astro";
-
 import { SANITY_DATASET_NAME, SANITY_PROJECT_ID } from "./env.mjs";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://oxmose.com",
   output: "hybrid",
   integrations: [
     sanity({
@@ -22,5 +23,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    sitemap(),
   ],
 });
