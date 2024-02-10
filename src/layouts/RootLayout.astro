@@ -1,0 +1,23 @@
+---
+import Player from "../components/Player";
+import CommonHead from "../components/CommonHead.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <CommonHead title="Astro" decription="Astro" />
+  </head>
+
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+    </nav>
+
+    <slot />
+
+    <Player client:load transition:persist="media-player" />
+  </body>
+</html>
