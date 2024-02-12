@@ -2,20 +2,29 @@
 import { sanityClient } from "sanity:client";
 
 import RootLayout from "../../layouts/RootLayout.astro";
+import type { Slug } from "sanity";
 
-const artists = await sanityClient.fetch(
+const artists: { name: string; slug: Slug }[] = await sanityClient.fetch(
   `*[_type == "artist" && defined(slug)] | order(publishedAt desc)`
 );
 ---
 
 <RootLayout>
-  <h1>Artists</h1>
+  <h1 hidden>Artists</h1>
 
-  <ul>
+  <ul class="divide-y divide-black">
     {
       artists.map((artist) => (
-        <li>
-          <a href={"/artist/" + artist.slug.current}>{artist.name}</a>
+        <li class="h-24 px-8 group last:!border-b last:border-black">
+          <a href={"/artists/" + artist.slug.current}>
+            <span class="text-[80px] leading-[90px] font-normal">
+              {artist.name}
+            </span>
+          </a>
+
+          <div class="aspect-video hidden group-hover:block max-w-lg w-full bg-black absolute right-10 top-1/2 -translate-y-1/2">
+            <span class="text-white text-9xl">{artist.name}</span>
+          </div>
         </li>
       ))
     }

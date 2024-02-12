@@ -2,18 +2,32 @@
 import Logo from "../shared/Logo.astro";
 ---
 
-<nav class="bg-white h-28 w-full">
-  <div class="flex">
+<nav class="bg-white h-28 w-full border-b border-black">
+  <div class="flex items-center px-10 py-6">
     <Logo />
 
     <div class="ml-auto flex gap-10">
-      <a class="uppercase" href="/">Catalogue</a>
+      <a class="text-[25px] leading-[34px] font-medium uppercase" href="/">
+        Catalogue
+      </a>
 
-      <a class="uppercase" href="/artists">Artists</a>
+      <a
+        class="text-[25px] leading-[34px] font-medium uppercase"
+        href="/artists"
+      >
+        Artists
+      </a>
 
-      <a class="uppercase" href="/about">à propos</a>
+      <a class="text-[25px] leading-[34px] font-medium uppercase" href="/about">
+        à propos
+      </a>
 
-      <a class="uppercase" href="/contact">Contact</a>
+      <a
+        class="text-[25px] leading-[34px] font-medium uppercase"
+        href="/contact"
+      >
+        Contact
+      </a>
     </div>
   </div>
 </nav>

@@ -1,0 +1,23 @@
+---
+import type { GetStaticPaths } from "astro";
+import { sanityClient } from "sanity:client";
+
+import RootLayout from "../../layouts/RootLayout.astro";
+import { Slug } from "sanity";
+
+export const getStaticPaths = (async () => {
+  const artists: { slug: Slug }[] = await sanityClient.fetch(
+    `*[_type == "artist" && defined(slug)] | order(publishedAt desc)`
+  );
+
+  return artists.map((artist) => ({
+    params: { slug: artist.slug.current },
+  }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+---
+
+<RootLayout>
+  <h1>{slug}</h1>
+</RootLayout>
