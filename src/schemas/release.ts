@@ -1,24 +1,34 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "artist",
-  title: "Artist",
+  name: "release",
+  title: "Release",
   type: "document",
   fields: [
     defineField({
-      name: "name",
+      name: "title",
       type: "string",
-      validation: (Rule) => [Rule.required()],
+      validation: (StringRule) => [StringRule.required()],
     }),
     defineField({
       name: "slug",
       type: "slug",
       options: {
-        source: "name",
         maxLength: 96,
         isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
       validation: (SlugRule) => [SlugRule.required()],
+    }),
+    defineField({
+      name: "artist",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "reference",
+          to: { type: "artist" },
+        }),
+      ],
+      validation: (ArrayRule) => [ArrayRule.required()],
     }),
     defineField({
       name: "overview",
@@ -35,6 +45,10 @@ export default defineType({
       validation: (Rule) => [Rule.required()],
     }),
     defineField({
+      name: "description",
+      type: "blockContent",
+    }),
+    defineField({
       name: "links",
       type: "array",
       of: [
@@ -42,10 +56,6 @@ export default defineType({
           type: "link",
         }),
       ],
-    }),
-    defineField({
-      name: "body",
-      type: "blockContent",
     }),
   ],
 });
