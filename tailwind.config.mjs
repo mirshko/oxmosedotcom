@@ -4,6 +4,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {},
+      fontSize: {
+        "oxe-sm": ["25px", { lineHeight: "34px" }],
+        "oxe-md": ["30px", { lineHeight: "35px" }],
+      },
     },
   },
   plugins: [],
