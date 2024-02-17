@@ -1,4 +1,22 @@
-import { defineArrayMember, defineField, defineType } from "sanity";
+import {
+  defineArrayMember,
+  defineField,
+  defineType,
+  type Image,
+  type Slug,
+} from "sanity";
+
+export type Artist = {
+  name: string;
+  coverImage: Image;
+  _id: string;
+  _updatedAt: string;
+  body: any[];
+  slug: Slug;
+  overview: string;
+  _createdAt: string;
+  _type: "artist";
+};
 
 export default defineType({
   name: "artist",

@@ -1,21 +1,32 @@
 ---
-import type { Slug } from "sanity";
+import { urlForImage } from "../sanity/urlForImage";
+import type { Artist } from "../schemas/artist";
 
 export interface Props {
-  artist: { name: string; slug: Slug };
+  artist: Artist;
 }
 
 const { artist } = Astro.props;
 
 const link = "/artists/" + artist.slug.current;
+
+const url = urlForImage(artist.coverImage).url();
+const webpUrl = urlForImage(artist.coverImage).format("webp").url();
 ---
 
 <li class="h-24 px-8 group last:!border-b last:border-black">
   <a class="text-oxe-xxl" href={link}>{artist.name}</a>
 
-  <div
-    class="aspect-video hidden group-hover:block max-w-lg w-full bg-black absolute right-10 top-1/2 -translate-y-1/2"
+  <picture
+    class="absolute right-10 top-1/2 -translate-y-1/2 hidden md:group-hover:block"
   >
-    <span class="text-white text-9xl">{artist.name}</span>
-  </div>
+    <source srcset={webpUrl} type="image/webp" />
+    <img
+      class="aspect-[16/10] object-cover object-center max-w-lg w-full"
+      alt={artist.name}
+      src={url}
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
 </li>
