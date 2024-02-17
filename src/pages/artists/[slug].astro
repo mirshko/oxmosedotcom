@@ -1,23 +1,49 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { sanityClient } from "sanity:client";
-
+import type { Artist } from "../../schemas/artist";
 import RootLayout from "../../layouts/RootLayout.astro";
-import { Slug } from "sanity";
 
 export const getStaticPaths = (async () => {
-  const artists: { slug: Slug }[] = await sanityClient.fetch(
+  const artists: Artist[] = await sanityClient.fetch(
     `*[_type == "artist" && defined(slug)] | order(publishedAt desc)`
   );
 
-  return artists.map((artist) => ({
-    params: { slug: artist.slug.current },
-  }));
+  return artists.map((artist, index) => {
+    const prev = index === 0 ? artists[artists.length - 1] : artists[index - 1];
+
+    const next = artists.length === index + 1 ? artists[0] : artists[index + 1];
+
+    return {
+      params: { slug: artist.slug.current },
+      props: {
+        artist,
+        prev: prev.slug.current,
+        next: next.slug.current,
+      },
+    };
+  });
 }) satisfies GetStaticPaths;
 
 const { slug } = Astro.params;
+
+const { artist, prev, next } = Astro.props;
 ---
 
-<RootLayout>
-  <h1>{slug}</h1>
+<RootLayout title={`${artist.name} | Oxmose`} description={artist.overview}>
+  <div class="px-10 py-[3px] border-b border-black">
+    <h1 class="text-oxe-xxl">{artist.name}</h1>
+  </div>
+
+  <div
+    class="px-10 h-10 flex items-center justify-between border-b border-black"
+  >
+    <a href={`/artists/${prev}`} class="text-oxe-sm font-medium uppercase">
+      Prev
+    </a>
+
+    <a href={`/artists/${next}`} class="text-oxe-sm font-medium uppercase">
+      Next
+    </a>
+  </div>
 </RootLayout>
