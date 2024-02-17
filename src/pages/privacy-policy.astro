@@ -1,5 +1,9 @@
 ---
 import RootLayout from "../layouts/RootLayout.astro";
+import Prose from "../components/Prose.astro";
+
+import { Content as PrivacyPolicyEn } from "../content/privacy-policy-en.md";
+import { Content as PrivacyPolicyFr } from "../content/privacy-policy-fr.md";
 ---
 
 <RootLayout title="Privacy policy | Astro">
@@ -11,14 +15,9 @@ import RootLayout from "../layouts/RootLayout.astro";
         <p class="text-oxe-xxl leading-none shrink-0">En</p>
       </div>
 
-      <div class="text-oxe-sm leading-[30px]">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fuga nobis
-          fugiat assumenda illo eligendi, illum molestiae. Cupiditate id, porro
-          soluta saepe officia laudantium molestias, tempore, inventore neque
-          blanditiis veritatis.
-        </p>
-      </div>
+      <Prose>
+        <PrivacyPolicyEn />
+      </Prose>
     </section>
 
     <section lang="fr" class="p-10">
@@ -30,14 +29,9 @@ import RootLayout from "../layouts/RootLayout.astro";
         <p class="text-oxe-xxl leading-none shrink-0">Fr</p>
       </div>
 
-      <div class="text-oxe-sm leading-[30px]">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fuga nobis
-          fugiat assumenda illo eligendi, illum molestiae. Cupiditate id, porro
-          soluta saepe officia laudantium molestias, tempore, inventore neque
-          blanditiis veritatis.
-        </p>
-      </div>
+      <Prose>
+        <PrivacyPolicyFr />
+      </Prose>
     </section>
   </div>
 </RootLayout>

@@ -1,5 +1,9 @@
 ---
 import RootLayout from "../layouts/RootLayout.astro";
+import Prose from "../components/Prose.astro";
+
+import { Content as TermsEn } from "../content/terms-and-conditions-en.md";
+import { Content as TermsFr } from "../content/terms-and-conditions-fr.md";
 ---
 
 <RootLayout title="Terms and conditions | Astro">
@@ -11,14 +15,9 @@ import RootLayout from "../layouts/RootLayout.astro";
         <p class="text-oxe-xxl leading-none shrink-0">En</p>
       </div>
 
-      <div class="text-oxe-sm leading-[30px]">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fuga nobis
-          fugiat assumenda illo eligendi, illum molestiae. Cupiditate id, porro
-          soluta saepe officia laudantium molestias, tempore, inventore neque
-          blanditiis veritatis.
-        </p>
-      </div>
+      <Prose>
+        <TermsEn />
+      </Prose>
     </section>
 
     <section lang="fr" class="p-10">
@@ -28,14 +27,9 @@ import RootLayout from "../layouts/RootLayout.astro";
         <p class="text-oxe-xxl leading-none shrink-0">Fr</p>
       </div>
 
-      <div class="text-oxe-sm leading-[30px]">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fuga nobis
-          fugiat assumenda illo eligendi, illum molestiae. Cupiditate id, porro
-          soluta saepe officia laudantium molestias, tempore, inventore neque
-          blanditiis veritatis.
-        </p>
-      </div>
+      <Prose>
+        <TermsFr />
+      </Prose>
     </section>
   </div>
 </RootLayout>
