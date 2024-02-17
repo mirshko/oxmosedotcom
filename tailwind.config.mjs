@@ -5,8 +5,10 @@ export default {
     extend: {
       fontFamily: {},
       fontSize: {
+        "oxe-xs": ["18px", { lineHeight: "25px" }],
         "oxe-sm": ["25px", { lineHeight: "34px" }],
         "oxe-md": ["30px", { lineHeight: "35px" }],
+        "oxe-lg": ["45px", { lineHeight: "50px" }],
         "oxe-xxl": ["80px", { lineHeight: "90px" }],
       },
     },
