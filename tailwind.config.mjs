@@ -7,6 +7,7 @@ export default {
       fontSize: {
         "oxe-sm": ["25px", { lineHeight: "34px" }],
         "oxe-md": ["30px", { lineHeight: "35px" }],
+        "oxe-xxl": ["80px", { lineHeight: "90px" }],
       },
     },
   },

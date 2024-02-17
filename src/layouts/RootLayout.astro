@@ -4,13 +4,20 @@ import CommonHead from "../components/CommonHead.astro";
 import NavBar from "../components/NavBar.astro";
 
 import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
 
-    <CommonHead title="Astro" decription="Astro" />
+    <CommonHead title={title} description={description} />
   </head>
 
   <body>

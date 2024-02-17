@@ -1,0 +1,21 @@
+---
+import type { Slug } from "sanity";
+
+export interface Props {
+  artist: { name: string; slug: Slug };
+}
+
+const { artist } = Astro.props;
+
+const link = "/artists/" + artist.slug.current;
+---
+
+<li class="h-24 px-8 group last:!border-b last:border-black">
+  <a class="text-oxe-xxl" href={link}>{artist.name}</a>
+
+  <div
+    class="aspect-video hidden group-hover:block max-w-lg w-full bg-black absolute right-10 top-1/2 -translate-y-1/2"
+  >
+    <span class="text-white text-9xl">{artist.name}</span>
+  </div>
+</li>
