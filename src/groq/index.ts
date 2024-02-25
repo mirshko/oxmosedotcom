@@ -10,9 +10,9 @@ export const AboutQuery = /* groq */ `
   }
 `;
 
-type TwoColumn<Element> = {
-  left: Element[];
-  right: Element[];
+type TwoColumn<T> = {
+  left: T;
+  right: T;
 };
 
 type Credits = {
@@ -23,8 +23,8 @@ export type AboutQuery = {
   overview: string;
   title: string;
   part1: any[];
-  part2: TwoColumn<Credits>;
+  part2: TwoColumn<Credits[]>;
   part3: any[];
-  part4: TwoColumn<Credits>;
+  part4: TwoColumn<Credits[]>;
   part5: any[];
 };
