@@ -5,96 +5,109 @@ import RootLayout from "../layouts/RootLayout.astro";
 <RootLayout title="Contact | Astro">
   <h1 hidden>Contact | Oxmose</h1>
 
-  <section class="border-b border-black">
-    <div class="p-10">
-      <h2 class="text-oxe-xxl mb-10">General inquiry</h2>
+  <section
+    class="flex min-h-96 flex-col border-b border-black p-9 md:min-h-[30rem] md:p-10"
+  >
+    <h2 class="text-oxe-md md:text-oxe-xxl mb-4 md:mb-10">General inquiry</h2>
 
-      <p class="text-oxe-lg mb-28">Drop us a line to say hello.</p>
+    <p class="text-oxe-sm md:text-oxe-lg">Drop us a line to say hello.</p>
 
-      <p class="text-oxe-xxl text-right">
-        <a href="mailto:office@oxmose.com">office(at)oxmose.com</a>
-      </p>
+    <p class="text-oxe-md md:text-oxe-xxl text-right mt-auto">
+      <a href="mailto:office@oxmose.com">office(at)oxmose.com</a>
+    </p>
+  </section>
+
+  <section
+    class="flex min-h-96 flex-col gap-12 border-b border-black p-9 md:grid md:min-h-[30rem] md:grid-cols-2 md:gap-0 md:divide-x md:divide-black md:p-0"
+  >
+    <div class="grid grid-cols-2 md:p-10">
+      <h3 class="text-oxe-md md:text-oxe-xxl">Listen</h3>
+
+      <ul class="md:self-end md:list-disc md:list-inside">
+        <li class="whitespace-nowrap text-oxe-sm md:text-oxe-lg">
+          <a href="#Spotify">Spotify</a>
+        </li>
+        <li class="whitespace-nowrap text-oxe-sm md:text-oxe-lg">
+          <a href="#Bandcamp">Bandcamp</a>
+        </li>
+        <li class="whitespace-nowrap text-oxe-sm md:text-oxe-lg">
+          <a href="#Soundcloud">Soundcloud</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-2 md:p-10">
+      <h3 class="text-oxe-md md:text-oxe-xxl">Follow</h3>
+
+      <ul class="md:self-end md:list-disc md:list-inside">
+        <li class="whitespace-nowrap text-oxe-sm md:text-oxe-lg">
+          <a href="#Instagram">Instagram</a>
+        </li>
+        <li class="whitespace-nowrap text-oxe-sm md:text-oxe-lg">
+          <a href="#Facebook">Facebook</a>
+        </li>
+        <li class="whitespace-nowrap text-oxe-sm md:text-oxe-lg">
+          <a href="#X">X</a>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <section class="border-b border-black grid grid-cols-2 divide-x divide-black">
-    <div class="p-10">
-      <h3 class="text-oxe-xxl mb-48">Listen</h3>
+  <section
+    class="flex min-h-96 flex-col border-b border-black p-9 md:min-h-[30rem] md:p-10"
+  >
+    <h2 class="text-oxe-md md:text-oxe-xxl mb-4 md:mb-10">Demo</h2>
 
-      <div class="flex justify-end">
-        <ul class="list-disc list-inside text-oxe-lg">
-          <li>Spotify</li>
-          <li>Bandcamp</li>
-          <li>Soundcloud</li>
-        </ul>
+    <p class="text-oxe-sm md:text-oxe-lg">
+      We are open to demo proposals, please submit digital formats, tapes or CDs
+      with prior contact.
+    </p>
+
+    <p class="text-oxe-md md:text-oxe-xxl text-right mt-auto">
+      <a href="mailto:demo@oxmose.com">demo(at)oxmose.com</a>
+    </p>
+  </section>
+
+  <section
+    class="border-b border-black md:grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-black"
+  >
+    <div
+      class="p-9 md:p-10 min-h-96 md:min-h-[30rem] flex flex-row md:flex-col"
+    >
+      <h3 class="text-oxe-md md:text-oxe-xxl flex-1 md:flex-auto">Location</h3>
+
+      <div class="flex flex-col gap-10 md:flex-row justify-between md:mt-auto">
+        <dl>
+          <dt class="text-oxe-sm md:text-oxe-lg font-medium">Headquarters</dt>
+          <dd class="text-oxe-sm md:text-oxe-lg">Paris</dd>
+        </dl>
+
+        <dl>
+          <dt class="text-oxe-sm md:text-oxe-lg font-medium">Office/Studio</dt>
+          <dd class="text-oxe-sm md:text-oxe-lg">Bucharest</dd>
+        </dl>
       </div>
     </div>
 
-    <div class="p-10">
-      <h3 class="text-oxe-xxl mb-48">Follow</h3>
+    <div class="p-9 md:p-10 min-h-96 md:min-h-[30rem] flex flex-col">
+      <h3 class="text-oxe-md md:text-oxe-xxl">Press kit</h3>
 
-      <div class="flex justify-end">
-        <ul class="list-disc list-inside text-oxe-lg">
-          <li>Instagram</li>
-          <li>Facebook</li>
-          <li>X</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="border-b border-black">
-    <div class="p-10">
-      <h2 class="text-oxe-xxl mb-10">Demo</h2>
-
-      <p class="text-oxe-lg mb-28">
-        We are open to demo proposals, please submit digital formats, tapes or
-        CDs with prior contact.
-      </p>
-
-      <p class="text-oxe-xxl text-right">
-        <a href="mailto:demo@oxmose.com">demo(at)oxmose.com</a>
-      </p>
-    </div>
-  </section>
-
-  <section class="border-b border-black grid grid-cols-2 divide-x divide-black">
-    <div class="p-10">
-      <h3 class="text-oxe-xxl mb-48">Location</h3>
-
-      <dl>
-        <dt class="text-oxe-lg font-medium">Headquarters</dt>
-        <dd class="text-oxe-lg">Paris</dd>
-      </dl>
-
-      <dl>
-        <dt class="text-oxe-lg font-medium">Office/Studio</dt>
-        <dd class="text-oxe-lg">Bucharest</dd>
-      </dl>
-    </div>
-
-    <div class="p-10">
-      <h3 class="text-oxe-xxl mb-48">Press kit</h3>
-
-      <p class="text-oxe-xxl text-right">
+      <p class="text-oxe-md md:text-oxe-xxl text-right mt-auto">
         <a href="#press-kit">download</a>
       </p>
     </div>
   </section>
 
-  <section>
-    <div class="p-10">
-      <h2 class="text-oxe-xxl mb-10">Sync</h2>
+  <section class="flex min-h-96 flex-col p-9 md:min-h-[30rem] md:p-10">
+    <h2 class="text-oxe-md md:text-oxe-xxl mb-4 md:mb-10">Sync</h2>
 
-      <p class="text-oxe-lg mb-28">
-        If you are inspired by Oxmose works and wish to use pieces from our
-        catalogue for film, theatre or art projects, please get in touch with
-        us.
-      </p>
+    <p class="text-oxe-sm md:text-oxe-lg">
+      If you are inspired by Oxmose works and wish to use pieces from our
+      catalogue for film, theatre or art projects, please get in touch with us.
+    </p>
 
-      <p class="text-oxe-xxl text-right">
-        <a href="mailto:sync@oxmose.com"> sync(at)oxmose.com</a>
-      </p>
-    </div>
+    <p class="text-oxe-md md:text-oxe-xxl text-right mt-auto">
+      <a href="mailto:sync@oxmose.com">sync(at)oxmose.com</a>
+    </p>
   </section>
 </RootLayout>
