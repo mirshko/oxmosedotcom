@@ -1,9 +1,13 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
-      fontFamily: {},
+      fontFamily: {
+        sans: ['"Monument Grotesk"', ...defaultTheme.fontFamily.sans],
+      },
       fontSize: {
         "oxe-xs": ["18px", { lineHeight: "25px" }],
         "oxe-sm": ["25px", { lineHeight: "34px" }],
