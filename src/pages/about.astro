@@ -14,14 +14,16 @@ const joinHtmlString = `<span class="hidden lg:inline">, </span><br class="lg:hi
 <RootLayout title={`${page.title} | Oxmose`} description={page.overview}>
   <h1 hidden>{`${page.title} | Oxmose`}</h1>
 
-  <section class="border-b border-black p-9 lg:p-10">
+  <section
+    class="flex min-h-svh items-center border-b border-black p-9 lg:p-10"
+  >
     <div class="text-oxe-md lg:text-oxe-xxl/[85px]">
       <PortableText value={page.part1} />
     </div>
   </section>
 
   <section
-    class="divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
+    class="min-h-svh divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
   >
     <div class="mb-5 space-y-5 lg:mb-0 lg:space-y-10 lg:p-10">
       {
@@ -58,14 +60,16 @@ const joinHtmlString = `<span class="hidden lg:inline">, </span><br class="lg:hi
     </div>
   </section>
 
-  <section class="border-b border-black p-9 lg:p-10">
+  <section
+    class="flex min-h-svh items-center border-b border-black p-9 lg:p-10"
+  >
     <div class="text-oxe-md lg:text-oxe-xxl/[85px]">
       <PortableText value={page.part3} />
     </div>
   </section>
 
   <section
-    class="divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
+    class="min-h-svh divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
   >
     <div class="mb-5 space-y-5 lg:mb-0 lg:space-y-10 lg:p-10">
       {
@@ -102,11 +106,13 @@ const joinHtmlString = `<span class="hidden lg:inline">, </span><br class="lg:hi
     </div>
   </section>
 
-  <section class="border-b border-black p-9 lg:p-10">
+  <section
+    class="flex min-h-svh items-center border-b border-black p-9 lg:p-10"
+  >
     <div class="text-oxe-md lg:text-oxe-xxl/[85px]">
       <PortableText value={page.part5} />
     </div>
   </section>
 
-  <section class="p-9 lg:p-10"></section>
+  <section class="min-h-svh p-9 lg:p-10"></section>
 </RootLayout>
