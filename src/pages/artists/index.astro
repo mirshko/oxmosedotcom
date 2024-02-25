@@ -6,7 +6,7 @@ import ArtistRow from "../../components/ArtistRow.astro";
 
 import type { Artist } from "../../schemas/artist";
 
-const artists: Artist[] = await sanityClient.fetch(
+const artists = await sanityClient.fetch<Artist[]>(
   `*[_type == "artist" && defined(slug)] | order(publishedAt desc)`,
 );
 ---

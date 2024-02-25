@@ -1,38 +1,112 @@
 ---
+import { sanityClient } from "sanity:client";
+import { AboutQuery } from "../groq";
+import { PortableText } from "astro-portabletext";
 import RootLayout from "../layouts/RootLayout.astro";
+
+const page = await sanityClient.fetch<AboutQuery>(AboutQuery);
+
+const creditData = ["One", "Two", "Three"];
+
+const joinHtmlString = `<span class="hidden lg:inline">, </span><br class="lg:hidden" />`;
 ---
 
-<RootLayout title="à propos | Astro">
-  <h1 hidden>à propos | Astro</h1>
+<RootLayout title={`${page.title} | Oxmose`} description={page.overview}>
+  <h1 hidden>{`${page.title} | Oxmose`}</h1>
 
   <section class="border-b border-black p-9 lg:p-10">
-    <p class="text-oxe-md lg:text-oxe-xxl/[85px]">
-      Oxmose is an independent french record label with a non-linear
-      contemporary music vision, defining its sound identity through artistic
-      concepts that blur genre lines, while also immersing the audience in a
-      unique visual experience.
-    </p>
+    <div class="text-oxe-md lg:text-oxe-xxl/[85px]">
+      <PortableText value={page.part1} />
+    </div>
   </section>
 
-  <section class="border-b border-black p-9 lg:p-10"></section>
+  <section
+    class="divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
+  >
+    <div class="mb-5 space-y-5 lg:mb-0 lg:space-y-10 lg:p-10">
+      {
+        page.part2.left.map((credit) => (
+          <article>
+            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
+              {credit.title}
+            </h3>
+
+            <p
+              class="text-oxe-xs lg:text-oxe-md"
+              set:html={creditData.join(joinHtmlString)}
+            />
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="space-y-5 lg:space-y-10 lg:p-10">
+      {
+        page.part2.right.map((credit) => (
+          <article>
+            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
+              {credit.title}
+            </h3>
+
+            <p
+              class="text-oxe-xs lg:text-oxe-md"
+              set:html={creditData.join(joinHtmlString)}
+            />
+          </article>
+        ))
+      }
+    </div>
+  </section>
 
   <section class="border-b border-black p-9 lg:p-10">
-    <p class="text-oxe-md lg:text-oxe-xxl/[85px]">
-      At its core, Oxmose constantly searches for disruptive sound encounters,
-      with resonances in philosophy, poetry, and visual arts. More than music
-      production, we absorb ideas and transform them into musical narratives for
-      sync and licensing projects for films, theatre, art installations and a
-      variety of media of expression.
-    </p>
+    <div class="text-oxe-md lg:text-oxe-xxl/[85px]">
+      <PortableText value={page.part3} />
+    </div>
   </section>
 
-  <section class="border-b border-black p-9 lg:p-10"></section>
+  <section
+    class="divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
+  >
+    <div class="mb-5 space-y-5 lg:mb-0 lg:space-y-10 lg:p-10">
+      {
+        page.part4.left.map((credit) => (
+          <article>
+            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
+              {credit.title}
+            </h3>
+
+            <p
+              class="text-oxe-xs lg:text-oxe-md"
+              set:html={creditData.join(joinHtmlString)}
+            />
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="space-y-5 lg:space-y-10 lg:p-10">
+      {
+        page.part4.right.map((credit) => (
+          <article>
+            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
+              {credit.title}
+            </h3>
+
+            <p
+              class="text-oxe-xs lg:text-oxe-md"
+              set:html={creditData.join(joinHtmlString)}
+            />
+          </article>
+        ))
+      }
+    </div>
+  </section>
 
   <section class="border-b border-black p-9 lg:p-10">
-    <p class="text-oxe-md lg:text-oxe-xxl/[85px]">
-      From its early days back in 2014, Oxmose has remained an électron libre,
-      advocating for artistic freedom and imaginative enquiry in shaping endless
-      sonic landscapes.
-    </p>
+    <div class="text-oxe-md lg:text-oxe-xxl/[85px]">
+      <PortableText value={page.part5} />
+    </div>
   </section>
+
+  <section class="p-9 lg:p-10"></section>
 </RootLayout>

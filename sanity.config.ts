@@ -1,6 +1,6 @@
 // sanity.config.ts
 import { defineConfig } from "sanity";
-import { structureTool } from "sanity/structure";
+import { structureTool, type StructureBuilder } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { SANITY_DATASET_NAME, SANITY_PROJECT_ID } from "./env.mjs";
 import { schemaTypes, singletonTypes } from "./src/schemas";
@@ -9,6 +9,16 @@ import { schemaTypes, singletonTypes } from "./src/schemas";
  * Define the actions that should be available for singleton documents
  */
 const singletonActions = new Set(["publish", "discardChanges", "restore"]);
+
+const singletonListItem = (
+  S: StructureBuilder,
+  typeName: string,
+  title?: string,
+) =>
+  S.listItem()
+    .title(title || typeName)
+    .id(typeName)
+    .child(S.document().schemaType(typeName).documentId(typeName));
 
 export default defineConfig({
   name: "oxmose",
@@ -25,14 +35,7 @@ export default defineConfig({
         const singletonItems = schemaTypes
           .filter((type) => singletonTypes.has(type.name))
           .map((schemaType) =>
-            S.listItem()
-              .title(schemaType.title ?? schemaType.name)
-              .id(schemaType.name)
-              .child(
-                S.document()
-                  .schemaType(schemaType.name)
-                  .documentId(schemaType.name),
-              ),
+            singletonListItem(S, schemaType.name, schemaType.title),
           );
 
         return S.list()
