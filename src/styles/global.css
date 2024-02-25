@@ -7,28 +7,28 @@
     font-family: "Monument Grotesk";
     font-weight: 400;
     font-style: normal;
-    src: url(../fonts/ABCMonumentGrotesk-Regular-Trial.woff2);
+    src: url("/fonts/ABCMonumentGrotesk-Regular-Trial.woff2");
     font-display: swap;
   }
   @font-face {
     font-family: "Monument Grotesk";
     font-weight: 400;
     font-style: italic;
-    src: url(../fonts/MonumentABCMonumentGrotesk-RegularItalic-Trial.woff2);
+    src: url("/fonts/MonumentABCMonumentGrotesk-RegularItalic-Trial.woff2");
     font-display: swap;
   }
   @font-face {
     font-family: "Monument Grotesk";
     font-weight: 500;
     font-style: normal;
-    src: url(../fonts/ABCMonumentGrotesk-Medium-Trial.woff2);
+    src: url("/fonts/ABCMonumentGrotesk-Medium-Trial.woff2");
     font-display: swap;
   }
   @font-face {
     font-family: "Monument Grotesk";
     font-weight: 500;
     font-style: italic;
-    src: url(../fonts/ABCMonumentGrotesk-MediumItalic-Trial.woff2);
+    src: url("/fonts/ABCMonumentGrotesk-MediumItalic-Trial.woff2");
     font-display: swap;
   }
 }
