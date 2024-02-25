@@ -1,15 +1,22 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import { sanityIntegration } from "@sanity/astro";
-import { SANITY_DATASET_NAME, SANITY_PROJECT_ID } from "./env.mjs";
-
+import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
+
+import { sanityIntegration } from "@sanity/astro";
+
+import { SANITY_DATASET_NAME, SANITY_PROJECT_ID } from "./env.mjs";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://oxmose.com",
   output: "hybrid",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   integrations: [
     sanityIntegration({
       projectId: SANITY_PROJECT_ID,
