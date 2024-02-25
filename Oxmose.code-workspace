@@ -1,11 +1,13 @@
 {
-	"folders": [
-		{
-			"path": "../oxmose"
-		},
-		{
-			"path": "."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "../oxmose",
+    },
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+  },
 }

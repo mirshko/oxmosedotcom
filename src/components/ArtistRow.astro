@@ -14,15 +14,15 @@ const url = urlForImage(artist.coverImage).url();
 const webpUrl = urlForImage(artist.coverImage).format("webp").url();
 ---
 
-<li class="h-24 px-10 group last:!border-b last:border-black">
+<li class="group h-24 px-10 last:!border-b last:border-black">
   <a class="text-oxe-xxl" href={link}>{artist.name}</a>
 
   <picture
-    class="absolute right-10 top-1/2 -translate-y-1/2 hidden md:group-hover:block"
+    class="absolute right-10 top-1/2 hidden -translate-y-1/2 md:group-hover:block"
   >
     <source srcset={webpUrl} type="image/webp" />
     <img
-      class="aspect-[16/10] object-cover object-center max-w-lg w-full"
+      class="aspect-[16/10] w-full max-w-lg object-cover object-center"
       alt={artist.name}
       src={url}
       loading="lazy"
