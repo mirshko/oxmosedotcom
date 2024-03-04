@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineType, defineField, defineArrayMember } from "sanity";
 
 export default defineType({
   name: "credits",
@@ -8,6 +8,16 @@ export default defineType({
       name: "title",
       type: "string",
       validation: (Rule) => [Rule.required()],
+    }),
+    defineField({
+      name: "items",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "item",
+          validation: (Rule) => [Rule.required()],
+        }),
+      ],
     }),
   ],
 });

@@ -3,12 +3,9 @@ import { sanityClient } from "sanity:client";
 import { AboutQuery } from "../groq";
 import { PortableText } from "astro-portabletext";
 import RootLayout from "../layouts/RootLayout.astro";
+import CreditArticle from "../components/CreditArticle.astro";
 
 const page = await sanityClient.fetch<AboutQuery>(AboutQuery);
-
-const creditData = ["One", "Two", "Three"];
-
-const joinHtmlString = `<span class="hidden lg:inline">, </span><br class="lg:hidden" />`;
 ---
 
 <RootLayout title={`${page.title} | Oxmose`} description={page.overview}>
@@ -26,37 +23,11 @@ const joinHtmlString = `<span class="hidden lg:inline">, </span><br class="lg:hi
     class="min-h-[56rem] divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
   >
     <div class="mb-5 space-y-5 lg:mb-0 lg:space-y-10 lg:p-10">
-      {
-        page.part2.left.map((credit) => (
-          <article>
-            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
-              {credit.title}
-            </h3>
-
-            <p
-              class="text-oxe-xs lg:text-oxe-md"
-              set:html={creditData.join(joinHtmlString)}
-            />
-          </article>
-        ))
-      }
+      {page.part2.left.map((credit) => <CreditArticle credit={credit} />)}
     </div>
 
     <div class="space-y-5 lg:space-y-10 lg:p-10">
-      {
-        page.part2.right.map((credit) => (
-          <article>
-            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
-              {credit.title}
-            </h3>
-
-            <p
-              class="text-oxe-xs lg:text-oxe-md"
-              set:html={creditData.join(joinHtmlString)}
-            />
-          </article>
-        ))
-      }
+      {page.part2.right.map((credit) => <CreditArticle credit={credit} />)}
     </div>
   </section>
 
@@ -72,37 +43,11 @@ const joinHtmlString = `<span class="hidden lg:inline">, </span><br class="lg:hi
     class="min-h-[56rem] divide-black border-b border-black p-9 lg:grid lg:grid-cols-2 lg:divide-x lg:p-0"
   >
     <div class="mb-5 space-y-5 lg:mb-0 lg:space-y-10 lg:p-10">
-      {
-        page.part4.left.map((credit) => (
-          <article>
-            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
-              {credit.title}
-            </h3>
-
-            <p
-              class="text-oxe-xs lg:text-oxe-md"
-              set:html={creditData.join(joinHtmlString)}
-            />
-          </article>
-        ))
-      }
+      {page.part4.left.map((credit) => <CreditArticle credit={credit} />)}
     </div>
 
     <div class="space-y-5 lg:space-y-10 lg:p-10">
-      {
-        page.part4.right.map((credit) => (
-          <article>
-            <h3 class="text-oxe-xs font-medium uppercase lg:text-oxe-md">
-              {credit.title}
-            </h3>
-
-            <p
-              class="text-oxe-xs lg:text-oxe-md"
-              set:html={creditData.join(joinHtmlString)}
-            />
-          </article>
-        ))
-      }
+      {page.part4.right.map((credit) => <CreditArticle credit={credit} />)}
     </div>
   </section>
 

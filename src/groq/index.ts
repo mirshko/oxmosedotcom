@@ -15,8 +15,16 @@ type TwoColumn<T> = {
   right: T;
 };
 
-type Credits = {
+type Item = {
+  name: string;
+  _type: "item";
+  link?: string;
+};
+
+export type Credits = {
   title: string;
+  _type: "credits";
+  items: Item[];
 };
 
 export type AboutQuery = {
