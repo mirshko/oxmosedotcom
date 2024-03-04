@@ -15,7 +15,11 @@ export default defineType({
       type: "url",
       name: "href",
       title: "URL",
-      validation: (Rule) => [Rule.required()],
+      validation: (UrlRule) => [
+        UrlRule.required().uri({
+          scheme: ["http", "https", "mailto", "tel"],
+        }),
+      ],
     }),
   ],
 });

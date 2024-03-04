@@ -1,13 +1,5 @@
 export const AboutQuery = /* groq */ `
-  *[_type == "about"][0] {
-    overview,
-    title,
-    part1,
-    part2,
-    part3,
-    part4,
-    part5,
-  }
+  *[_type == "about"][0]
 `;
 
 type TwoColumn<T> = {
@@ -35,4 +27,32 @@ export type AboutQuery = {
   part3: any[];
   part4: TwoColumn<Credits[]>;
   part5: any[];
+};
+
+export type Link = {
+  _type: "link";
+  name: string;
+  href: string;
+};
+
+export const ContactQuery = /* groq */ `
+  *[_type == "contact"][0]
+`;
+
+export type ContentSection = {
+  _type: "contentSection";
+  title: string;
+  content: any[];
+  link: Link;
+};
+
+export type ContactQuery = {
+  overview: string;
+  title: string;
+  generalSection: ContentSection;
+  listenLinks: Link[];
+  followLinks: Link[];
+  pressKit: Link;
+  demoSection: ContentSection;
+  syncSection: ContentSection;
 };

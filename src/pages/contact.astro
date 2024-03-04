@@ -1,19 +1,30 @@
 ---
+import { sanityClient } from "sanity:client";
+import { ContactQuery } from "../groq";
+import { PortableText } from "astro-portabletext";
 import RootLayout from "../layouts/RootLayout.astro";
+
+const page = await sanityClient.fetch<ContactQuery>(ContactQuery);
 ---
 
-<RootLayout title="Contact | Astro">
-  <h1 hidden>Contact | Oxmose</h1>
+<RootLayout title={`${page.title} | Oxmose`} description={page.overview}>
+  <h1 hidden>{`${page.title} | Oxmose`}</h1>
 
   <section
     class="flex min-h-96 flex-col border-b border-black p-9 lg:min-h-[30rem] lg:p-10"
   >
-    <h2 class="mb-4 text-oxe-md lg:mb-10 lg:text-oxe-xxl">General inquiry</h2>
+    <h2 class="mb-4 text-oxe-md lg:mb-10 lg:text-oxe-xxl">
+      {page.generalSection.title}
+    </h2>
 
-    <p class="text-oxe-sm lg:text-oxe-lg">Drop us a line to say hello.</p>
+    <div class="text-oxe-sm lg:text-oxe-lg">
+      <PortableText value={page.generalSection.content} />
+    </div>
 
     <p class="mt-auto text-right text-oxe-md lg:text-oxe-xxl">
-      <a href="mailto:office@oxmose.com">office(at)oxmose.com</a>
+      <a href={page.generalSection.link.href}>
+        {page.generalSection.link.name}
+      </a>
     </p>
   </section>
 
@@ -24,15 +35,13 @@ import RootLayout from "../layouts/RootLayout.astro";
       <h3 class="text-oxe-md lg:text-oxe-xxl">Listen</h3>
 
       <ul class="lg:list-inside lg:list-disc lg:self-end">
-        <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
-          <a href="#Spotify">Spotify</a>
-        </li>
-        <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
-          <a href="#Bandcamp">Bandcamp</a>
-        </li>
-        <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
-          <a href="#Soundcloud">Soundcloud</a>
-        </li>
+        {
+          page.listenLinks.map((link) => (
+            <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
+              <a href={link.href}>{link.name}</a>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
@@ -40,15 +49,13 @@ import RootLayout from "../layouts/RootLayout.astro";
       <h3 class="text-oxe-md lg:text-oxe-xxl">Follow</h3>
 
       <ul class="lg:list-inside lg:list-disc lg:self-end">
-        <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
-          <a href="#Instagram">Instagram</a>
-        </li>
-        <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
-          <a href="#Facebook">Facebook</a>
-        </li>
-        <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
-          <a href="#X">X</a>
-        </li>
+        {
+          page.followLinks.map((link) => (
+            <li class="whitespace-nowrap text-oxe-sm lg:text-oxe-lg">
+              <a href={link.href}>{link.name}</a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
@@ -56,15 +63,18 @@ import RootLayout from "../layouts/RootLayout.astro";
   <section
     class="flex min-h-96 flex-col border-b border-black p-9 lg:min-h-[30rem] lg:p-10"
   >
-    <h2 class="mb-4 text-oxe-md lg:mb-10 lg:text-oxe-xxl">Demo</h2>
+    <h2 class="mb-4 text-oxe-md lg:mb-10 lg:text-oxe-xxl">
+      {page.demoSection.title}
+    </h2>
 
-    <p class="text-oxe-sm lg:text-oxe-lg">
-      We are open to demo proposals, please submit digital formats, tapes or CDs
-      with prior contact.
-    </p>
+    <div class="text-oxe-sm lg:text-oxe-lg">
+      <PortableText value={page.demoSection.content} />
+    </div>
 
     <p class="mt-auto text-right text-oxe-md lg:text-oxe-xxl">
-      <a href="mailto:demo@oxmose.com">demo(at)oxmose.com</a>
+      <a href={page.demoSection.link.href}>
+        {page.demoSection.link.name}
+      </a>
     </p>
   </section>
 
@@ -92,24 +102,28 @@ import RootLayout from "../layouts/RootLayout.astro";
     </div>
 
     <div class="flex min-h-96 flex-col p-9 lg:min-h-[32rem] lg:p-10">
-      <h3 class="text-oxe-md lg:text-oxe-xxl">Press kit</h3>
+      <h3 class="text-oxe-md lg:text-oxe-xxl">{page.pressKit.name}</h3>
 
       <p class="mt-auto text-right text-oxe-md lg:text-oxe-xxl">
-        <a href="#press-kit">download</a>
+        <!-- @todo Convert to download link -->
+        <a href={page.pressKit.href}>download</a>
       </p>
     </div>
   </section>
 
   <section class="flex min-h-96 flex-col p-9 lg:min-h-[30rem] lg:p-10">
-    <h2 class="mb-4 text-oxe-md lg:mb-10 lg:text-oxe-xxl">Sync</h2>
+    <h2 class="mb-4 text-oxe-md lg:mb-10 lg:text-oxe-xxl">
+      {page.syncSection.title}
+    </h2>
 
-    <p class="text-oxe-sm lg:text-oxe-lg">
-      If you are inspired by Oxmose works and wish to use pieces from our
-      catalogue for film, theatre or art projects, please get in touch with us.
-    </p>
+    <div class="text-oxe-sm lg:text-oxe-lg">
+      <PortableText value={page.syncSection.content} />
+    </div>
 
     <p class="mt-auto text-right text-oxe-md lg:text-oxe-xxl">
-      <a href="mailto:sync@oxmose.com">sync(at)oxmose.com</a>
+      <a href={page.syncSection.link.href}>
+        {page.syncSection.link.name}
+      </a>
     </p>
   </section>
 </RootLayout>
