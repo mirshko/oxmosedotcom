@@ -1,3 +1,5 @@
+import type { Artist } from "../schemas/artist";
+
 export const AboutQuery = /* groq */ `
   *[_type == "about"][0]
 `;
@@ -56,3 +58,8 @@ export type ContactQuery = {
   demoSection: ContentSection;
   syncSection: ContentSection;
 };
+
+export const ArtistsQuery = /* groq */ `
+*[_type == "artist" && defined(slug)] | order(publishedAt desc)`;
+
+export type ArtistsQuery = Artist[];

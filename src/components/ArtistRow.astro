@@ -14,8 +14,10 @@ const url = urlForImage(artist.coverImage).url();
 const webpUrl = urlForImage(artist.coverImage).format("webp").url();
 ---
 
-<li class="group h-24 px-10 last:!border-b last:border-black">
-  <a class="text-oxe-xxl" href={link}>{artist.name}</a>
+<li class="group px-9 last:!border-b last:border-black sm:px-10">
+  <a class="text-oxe-xxl-mobile/[60px] sm:text-oxe-xxl/[96px]" href={link}>
+    {artist.name}
+  </a>
 
   <picture
     class="absolute right-10 top-1/2 hidden -translate-y-1/2 md:group-hover:block"

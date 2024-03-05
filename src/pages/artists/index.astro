@@ -1,14 +1,10 @@
 ---
 import { sanityClient } from "sanity:client";
-
+import { ArtistsQuery } from "../../groq";
 import RootLayout from "../../layouts/RootLayout.astro";
 import ArtistRow from "../../components/ArtistRow.astro";
 
-import type { Artist } from "../../schemas/artist";
-
-const artists = await sanityClient.fetch<Artist[]>(
-  `*[_type == "artist" && defined(slug)] | order(publishedAt desc)`,
-);
+const artists = await sanityClient.fetch<ArtistsQuery>(ArtistsQuery);
 ---
 
 <RootLayout title="Artists | Oxmose">

@@ -1,13 +1,11 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { sanityClient } from "sanity:client";
-import type { Artist } from "../../schemas/artist";
 import RootLayout from "../../layouts/RootLayout.astro";
+import { ArtistsQuery } from "../../groq";
 
 export const getStaticPaths = (async () => {
-  const artists: Artist[] = await sanityClient.fetch(
-    `*[_type == "artist" && defined(slug)] | order(publishedAt desc)`,
-  );
+  const artists = await sanityClient.fetch<ArtistsQuery>(ArtistsQuery);
 
   return artists.map((artist, index) => {
     const prev = index === 0 ? artists[artists.length - 1] : artists[index - 1];
@@ -31,12 +29,14 @@ const { artist, prev, next } = Astro.props;
 ---
 
 <RootLayout title={`${artist.name} | Oxmose`} description={artist.overview}>
-  <div class="h-24 border-b border-black px-10">
-    <h1 class="text-oxe-xxl">{artist.name}</h1>
+  <div class="border-b border-black px-9 sm:px-10">
+    <h1 class="text-oxe-xxl-mobile/[60px] sm:text-oxe-xxl/[96px]">
+      {artist.name}
+    </h1>
   </div>
 
   <div
-    class="flex h-10 items-center justify-between border-b border-black px-10"
+    class="flex h-10 items-center justify-between border-b border-black px-9 sm:px-10"
   >
     <a href={`/artists/${prev}`} class="text-oxe-sm font-medium uppercase">
       Prev
