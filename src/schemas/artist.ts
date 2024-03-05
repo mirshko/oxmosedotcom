@@ -5,6 +5,7 @@ import {
   type Image,
   type Slug,
 } from "sanity";
+import type { Link } from "../groq";
 
 export type Artist = {
   name: string;
@@ -14,6 +15,7 @@ export type Artist = {
   body: any[];
   slug: Slug;
   overview: string;
+  links: Link[];
   _createdAt: string;
   _type: "artist";
 };
