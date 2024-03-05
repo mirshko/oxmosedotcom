@@ -60,6 +60,6 @@ export type ContactQuery = {
 };
 
 export const ArtistsQuery = /* groq */ `
-*[_type == "artist" && defined(slug)] | order(publishedAt desc)`;
+*[_type == "artist" && defined(slug)] | order(name asc)`;
 
 export type ArtistsQuery = Artist[];
