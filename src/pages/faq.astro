@@ -38,56 +38,51 @@ import { Content as Orders } from "../content/faq/orders.md";
     });
   </script>
 
+  <style>
+    .tab-vertical-header {
+      @apply px-10 text-left text-oxe-xxl/[96px] last:!border-b last:border-black;
+    }
+    .tab-header {
+      @apply block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden;
+    }
+    .tab-content {
+      @apply hidden p-9 data-[tab-active]:block lg:p-10;
+    }
+  </style>
+
   <div class="flex-1 lg:grid lg:grid-cols-2 lg:divide-x lg:divide-black">
     <ul class="hidden divide-y divide-black lg:block">
-      <li class="px-10 text-oxe-xxl/[96px] last:!border-b last:border-black">
-        <button class="text-oxe-xxl/[96px]" data-tab="orders">Orders</button>
+      <li class="tab-vertical-header">
+        <button data-tab="orders">Orders</button>
       </li>
 
-      <li class="px-10 text-oxe-xxl/[96px] last:!border-b last:border-black">
-        <button class="text-oxe-xxl/[96px]" data-tab="payments">
-          Payments
-        </button>
+      <li class="tab-vertical-header">
+        <button data-tab="payments">Payments</button>
       </li>
 
-      <li class="px-10 text-oxe-xxl/[96px] last:!border-b last:border-black">
-        <button class="text-oxe-xxl/[96px]" data-tab="shipping">
-          Shipping
-        </button>
+      <li class="tab-vertical-header">
+        <button data-tab="shipping">Shipping</button>
       </li>
     </ul>
 
     <div
-      data-tabs-container
       class="divide-y divide-y-reverse divide-black first:*:!border-b first:*:border-black"
     >
-      <button
-        class="block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden"
-        data-accordion-header="orders"
-      >
+      <button class="tab-header" data-accordion-header="orders">
         Orders
       </button>
 
-      <article
-        data-tab-content="orders"
-        class="hidden p-9 data-[tab-active]:block lg:p-10"
-      >
+      <article data-tab-active data-tab-content="orders" class="tab-content">
         <Prose>
           <Orders />
         </Prose>
       </article>
 
-      <button
-        class="block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden"
-        data-accordion-header="payments"
-      >
+      <button class="tab-header" data-accordion-header="payments">
         Payments
       </button>
 
-      <article
-        data-tab-content="payments"
-        class="hidden p-9 data-[tab-active]:block lg:p-10"
-      >
+      <article data-tab-content="payments" class="tab-content">
         <h1>Payments</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iure
@@ -97,17 +92,11 @@ import { Content as Orders } from "../content/faq/orders.md";
         </p>
       </article>
 
-      <button
-        class="block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden"
-        data-accordion-header="shipping"
-      >
+      <button class="tab-header" data-accordion-header="shipping">
         Shipping
       </button>
 
-      <article
-        data-tab-content="shipping"
-        class="hidden p-9 data-[tab-active]:block lg:p-10"
-      >
+      <article data-tab-content="shipping" class="tab-content">
         <h1>Shipping</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iure
