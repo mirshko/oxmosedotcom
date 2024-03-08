@@ -104,7 +104,7 @@ const webpUrl = urlForImage(artist.coverImage).format("webp").url();
 
           <ul class="text-oxe-sm/[32px]">
             {
-              artist.links.map((link) => (
+              artist.links?.map((link) => (
                 <li>
                   <a href={link.href}>{link.name}</a>
                 </li>

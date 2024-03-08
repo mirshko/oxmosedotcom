@@ -1,0 +1,121 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import Prose from "../components/Prose.astro";
+
+import { Content as Orders } from "../content/faq/orders.md";
+---
+
+<RootLayout title="FAQ | Oxmose" mainClassName="flex flex-col">
+  <h1 hidden>FAQ | Oxmose</h1>
+
+  <script type="module">
+    function closeAllTabs() {
+      document.querySelectorAll("[data-tab-content]").forEach((el) => {
+        el.removeAttribute("data-tab-active");
+      });
+    }
+
+    document.querySelectorAll("[data-tab]").forEach((el) => {
+      el.addEventListener("click", () => {
+        closeAllTabs();
+
+        const tabId = el.getAttribute("data-tab");
+
+        const tab = document.querySelector(`[data-tab-content="${tabId}"]`);
+
+        tab.toggleAttribute("data-tab-active");
+      });
+    });
+
+    document.querySelectorAll("[data-accordion-header]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const tabId = el.getAttribute("data-accordion-header");
+
+        const tab = document.querySelector(`[data-tab-content="${tabId}"]`);
+
+        tab.toggleAttribute("data-tab-active");
+      });
+    });
+  </script>
+
+  <div class="flex-1 lg:grid lg:grid-cols-2 lg:divide-x lg:divide-black">
+    <ul class="hidden divide-y divide-black lg:block">
+      <li class="px-10 text-oxe-xxl/[96px] last:!border-b last:border-black">
+        <button class="text-oxe-xxl/[96px]" data-tab="orders">Orders</button>
+      </li>
+
+      <li class="px-10 text-oxe-xxl/[96px] last:!border-b last:border-black">
+        <button class="text-oxe-xxl/[96px]" data-tab="payments">
+          Payments
+        </button>
+      </li>
+
+      <li class="px-10 text-oxe-xxl/[96px] last:!border-b last:border-black">
+        <button class="text-oxe-xxl/[96px]" data-tab="shipping">
+          Shipping
+        </button>
+      </li>
+    </ul>
+
+    <div
+      data-tabs-container
+      class="divide-y divide-y-reverse divide-black first:*:!border-b first:*:border-black"
+    >
+      <button
+        class="block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden"
+        data-accordion-header="orders"
+      >
+        Orders
+      </button>
+
+      <article
+        data-tab-content="orders"
+        class="hidden p-9 data-[tab-active]:block lg:p-10"
+      >
+        <Prose>
+          <Orders />
+        </Prose>
+      </article>
+
+      <button
+        class="block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden"
+        data-accordion-header="payments"
+      >
+        Payments
+      </button>
+
+      <article
+        data-tab-content="payments"
+        class="hidden p-9 data-[tab-active]:block lg:p-10"
+      >
+        <h1>Payments</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iure
+          culpa qui, fugit, corporis fuga rem, necessitatibus accusantium nihil
+          placeat animi id ratione soluta possimus iste quae assumenda
+          distinctio! Cumque.
+        </p>
+      </article>
+
+      <button
+        class="block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden"
+        data-accordion-header="shipping"
+      >
+        Shipping
+      </button>
+
+      <article
+        data-tab-content="shipping"
+        class="hidden p-9 data-[tab-active]:block lg:p-10"
+      >
+        <h1>Shipping</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iure
+          culpa qui, fugit, corporis fuga rem, necessitatibus accusantium nihil
+          placeat animi id ratione soluta possimus iste quae assumenda
+          distinctio! Cumque.
+        </p>
+      </article>
+    </div>
+  </div>
+</RootLayout>
