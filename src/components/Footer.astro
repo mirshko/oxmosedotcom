@@ -2,26 +2,50 @@
 const fullYear = new Date().getFullYear();
 ---
 
-<footer class="shrink-0 bg-black py-[13px] text-white">
-  <nav class="flex gap-10 pl-10 pr-20">
-    <a class="whitespace-nowrap text-oxe-sm uppercase" href="/publishing">
-      Publishing
-    </a>
+<script>
+  document.querySelector("#back-to-top")?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
 
-    <a
-      class="whitespace-nowrap text-oxe-sm uppercase"
-      href="/terms-and-conditions"
+<footer class="shrink-0 bg-black py-2 text-white lg:py-[13px]">
+  <nav class="flex pl-9 pr-20 lg:pl-10">
+    <button type="button" id="back-to-top" class="block text-oxe-xs lg:hidden">
+      <span role="img" aria-hidden="true">↑</span>
+      <span class="sr-only">Back to top</span>
+    </button>
+
+    <div class="hidden gap-10 lg:flex">
+      <a
+        class="whitespace-nowrap text-oxe-xs uppercase lg:text-oxe-sm"
+        href="/publishing"
+      >
+        Publishing
+      </a>
+
+      <a
+        class="whitespace-nowrap text-oxe-xs uppercase lg:text-oxe-sm"
+        href="/terms-and-conditions"
+      >
+        Terms
+      </a>
+
+      <a
+        class="whitespace-nowrap text-oxe-xs uppercase lg:text-oxe-sm"
+        href="/privacy-policy"
+      >
+        Privacy
+      </a>
+
+      <a
+        class="whitespace-nowrap text-oxe-xs uppercase lg:text-oxe-sm"
+        href="/faq">FAQ</a
+      >
+    </div>
+
+    <span
+      class="ml-auto whitespace-nowrap text-oxe-xs uppercase lg:text-oxe-sm"
     >
-      Terms
-    </a>
-
-    <a class="whitespace-nowrap text-oxe-sm uppercase" href="/privacy-policy">
-      Privacy
-    </a>
-
-    <a class="whitespace-nowrap text-oxe-sm uppercase" href="/faq">FAQ</a>
-
-    <span class="ml-auto whitespace-nowrap text-oxe-sm uppercase">
       {`© ${fullYear} Oxmose`}
     </span>
   </nav>
