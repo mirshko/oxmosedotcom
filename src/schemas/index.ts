@@ -1,10 +1,12 @@
 import artist from "./artist";
+import faqs from "./faqs";
 import accessibleImage from "./objects/accessibleImage";
 import blockContent from "./objects/blockContent";
 import contentSection from "./objects/contentSection";
 import credits from "./objects/credits";
 import item from "./objects/item";
 import link from "./objects/link";
+import questionAnswer from "./objects/questionAnswer";
 import twoColumn from "./objects/twoColumn";
 import release from "./release";
 import about from "./singletons/about";
@@ -17,6 +19,7 @@ export const schemaTypes = [
   // regular document types
   artist,
   release,
+  faqs,
   // objects
   accessibleImage,
   link,
@@ -25,6 +28,7 @@ export const schemaTypes = [
   twoColumn,
   item,
   contentSection,
+  questionAnswer,
 ];
 
 /**

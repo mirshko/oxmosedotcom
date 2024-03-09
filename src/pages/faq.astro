@@ -1,8 +1,11 @@
 ---
+import { sanityClient } from "sanity:client";
+import { FAQsQuery } from "../groq";
 import RootLayout from "../layouts/RootLayout.astro";
-import Prose from "../components/Prose.astro";
 
-import { Content as Orders } from "../content/faq/orders.md";
+import { PortableText } from "astro-portabletext";
+
+const faqs = await sanityClient.fetch<FAQsQuery>(FAQsQuery);
 ---
 
 <RootLayout title="FAQ | Oxmose" mainClassName="flex flex-col">
@@ -40,7 +43,7 @@ import { Content as Orders } from "../content/faq/orders.md";
 
   <style>
     .tab-vertical-header {
-      @apply px-10 text-left text-oxe-xxl/[96px] last:!border-b last:border-black;
+      @apply px-10 text-oxe-xxl/[96px] last:!border-b last:border-black;
     }
     .tab-header {
       @apply block w-full px-9 text-left text-oxe-xxl-mobile/[60px] lg:hidden;
@@ -52,59 +55,42 @@ import { Content as Orders } from "../content/faq/orders.md";
 
   <div class="flex-1 lg:grid lg:grid-cols-2 lg:divide-x lg:divide-black">
     <ul class="hidden divide-y divide-black lg:block">
-      <li class="tab-vertical-header">
-        <button data-tab="orders">Orders</button>
-      </li>
-
-      <li class="tab-vertical-header">
-        <button data-tab="payments">Payments</button>
-      </li>
-
-      <li class="tab-vertical-header">
-        <button data-tab="shipping">Shipping</button>
-      </li>
+      {
+        faqs.map((faq) => (
+          <li class="tab-vertical-header">
+            <button class="text-left" data-tab={faq.slug.current}>
+              {faq.category}
+            </button>
+          </li>
+        ))
+      }
     </ul>
 
     <div
       class="divide-y divide-y-reverse divide-black first:*:!border-b first:*:border-black"
     >
-      <button class="tab-header" data-accordion-header="orders">
-        Orders
-      </button>
+      {
+        faqs.map((faq) => (
+          <>
+            <button class="tab-header" data-accordion-header={faq.slug.current}>
+              {faq.category}
+            </button>
 
-      <article data-tab-active data-tab-content="orders" class="tab-content">
-        <Prose>
-          <Orders />
-        </Prose>
-      </article>
+            <article
+              data-tab-content={faq.slug.current}
+              class="tab-content space-y-9 text-oxe-sm lg:space-y-10"
+            >
+              {faq.questions.map((qa) => (
+                <div class="space-y-4">
+                  <h4 class="-mb-4 font-medium">{qa.question}</h4>
 
-      <button class="tab-header" data-accordion-header="payments">
-        Payments
-      </button>
-
-      <article data-tab-content="payments" class="tab-content">
-        <h1>Payments</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iure
-          culpa qui, fugit, corporis fuga rem, necessitatibus accusantium nihil
-          placeat animi id ratione soluta possimus iste quae assumenda
-          distinctio! Cumque.
-        </p>
-      </article>
-
-      <button class="tab-header" data-accordion-header="shipping">
-        Shipping
-      </button>
-
-      <article data-tab-content="shipping" class="tab-content">
-        <h1>Shipping</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iure
-          culpa qui, fugit, corporis fuga rem, necessitatibus accusantium nihil
-          placeat animi id ratione soluta possimus iste quae assumenda
-          distinctio! Cumque.
-        </p>
-      </article>
+                  <PortableText value={qa.answer} />
+                </div>
+              ))}
+            </article>
+          </>
+        ))
+      }
     </div>
   </div>
 </RootLayout>

@@ -1,3 +1,4 @@
+import type { Slug } from "sanity";
 import type { Artist } from "../schemas/artist";
 
 export const AboutQuery = /* groq */ `
@@ -63,3 +64,19 @@ export const ArtistsQuery = /* groq */ `
 *[_type == "artist" && defined(slug)] | order(name asc)`;
 
 export type ArtistsQuery = Artist[];
+
+export const FAQsQuery = /* groq */ `
+*[_type == "faqs" && defined(questions)] | order(_createdAt asc)`;
+
+export type QuestionAnswer = {
+  question: string;
+  answer: any[];
+};
+
+export type FAQ = {
+  category: string;
+  slug: Slug;
+  questions: QuestionAnswer[];
+};
+
+export type FAQsQuery = FAQ[];
