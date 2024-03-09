@@ -4,5 +4,7 @@ import { FAQsQuery } from "../../groq";
 
 const faqs = await sanityClient.fetch<FAQsQuery>(FAQsQuery);
 
-return Astro.redirect(`/faq/${faqs[0].slug.current}`);
+const firstFaq = faqs[0];
+
+return Astro.redirect(`/faq/${firstFaq.slug.current}`);
 ---
