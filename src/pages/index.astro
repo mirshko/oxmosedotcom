@@ -2,6 +2,10 @@
 import RootLayout from "../layouts/RootLayout.astro";
 
 import CatalogueCard from "../components/CatalogueCard.astro";
+import { sanityClient } from "sanity:client";
+import { ReleasesQuery } from "../groq";
+
+const releases = await sanityClient.fetch<ReleasesQuery>(ReleasesQuery);
 ---
 
 <RootLayout title="Catalogue | Oxmose">
@@ -10,9 +14,6 @@ import CatalogueCard from "../components/CatalogueCard.astro";
   <div
     class="divide-y divide-black bg-black md:grid md:grid-cols-2 md:gap-px md:divide-y-0"
   >
-    <CatalogueCard />
-    <CatalogueCard />
-    <CatalogueCard />
-    <CatalogueCard />
+    {releases.map((release) => <CatalogueCard release={release} />)}
   </div>
 </RootLayout>

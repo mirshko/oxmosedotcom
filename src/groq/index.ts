@@ -1,5 +1,4 @@
-import type { Slug } from "sanity";
-import type { Artist } from "../schemas/artist";
+import type { Image, Slug } from "sanity";
 
 export const AboutQuery = /* groq */ `
   *[_type == "about"][0]
@@ -63,6 +62,19 @@ export type ContactQuery = {
 export const ArtistsQuery = /* groq */ `
 *[_type == "artist" && defined(slug)] | order(name asc)`;
 
+export type Artist = {
+  name: string;
+  coverImage: Image;
+  _id: string;
+  _updatedAt: string;
+  body: any[];
+  slug: Slug;
+  overview: string;
+  links: Link[];
+  _createdAt: string;
+  _type: "artist";
+};
+
 export type ArtistsQuery = Artist[];
 
 export const FAQsQuery = /* groq */ `
@@ -80,3 +92,25 @@ export type FAQ = {
 };
 
 export type FAQsQuery = FAQ[];
+
+export type Release = {
+  _id: string;
+  _updatedAt: string;
+  _createdAt: string;
+  _type: "release";
+  title: string;
+  slug: Slug;
+  artist: Pick<Artist, "name">[];
+  overview: string;
+  coverImage: Image;
+  description: any[];
+  links: Link[];
+};
+
+export const ReleasesQuery = /* groq */ `
+*[_type == "release" && defined(slug)] | order(_createdAt asc) {
+  ...,
+  artist[]->{name}
+}`;
+
+export type ReleasesQuery = Release[];

@@ -1,24 +1,4 @@
-import {
-  defineArrayMember,
-  defineField,
-  defineType,
-  type Image,
-  type Slug,
-} from "sanity";
-import type { Link } from "../groq";
-
-export type Artist = {
-  name: string;
-  coverImage: Image;
-  _id: string;
-  _updatedAt: string;
-  body: any[];
-  slug: Slug;
-  overview: string;
-  links: Link[];
-  _createdAt: string;
-  _type: "artist";
-};
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
   name: "artist",
