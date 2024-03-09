@@ -1,7 +1,18 @@
 ---
 import RootLayout from "../layouts/RootLayout.astro";
+
+import CatalogueCard from "../components/CatalogueCard.astro";
 ---
 
 <RootLayout title="Catalogue | Oxmose">
-  <h1>Astro</h1>
+  <h1 hidden>Catalogue | Oxmose</h1>
+
+  <div
+    class="divide-y divide-black bg-black md:grid md:grid-cols-2 md:gap-px md:divide-y-0"
+  >
+    <CatalogueCard />
+    <CatalogueCard />
+    <CatalogueCard />
+    <CatalogueCard />
+  </div>
 </RootLayout>
